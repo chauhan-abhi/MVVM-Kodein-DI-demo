@@ -7,10 +7,18 @@ import androidx.lifecycle.ViewModelProviders
 import com.androidabhi.mvvm_di_kodein.R
 import com.androidabhi.mvvm_di_kodein.data.model.Quote
 import kotlinx.android.synthetic.main.activity_quotes.*
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
-class QuotesActivity : AppCompatActivity() {
+class QuotesActivity : AppCompatActivity(), KodeinAware {
 
-    private val viewModelFactory : QuotesViewModelFactory = QuotesViewModelFactory()
+    // using by means its lazily initialized
+    // closestKodein() -> gets Kodein defined in QuotesApplication
+    override val kodein by closestKodein()
+
+    // get insatnce of QuotesViewModelFactory from kodein
+    private val viewModelFactory : QuotesViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +50,5 @@ class QuotesActivity : AppCompatActivity() {
             editText_quote.setText("")
             editText_author.setText("")
         }
-    }
     }
 }

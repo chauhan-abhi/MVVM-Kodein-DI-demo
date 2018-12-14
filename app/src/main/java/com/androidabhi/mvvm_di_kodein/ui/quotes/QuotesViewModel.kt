@@ -7,7 +7,7 @@ import com.androidabhi.mvvm_di_kodein.data.repository.QuoteRepository
 class QuotesViewModel(private val quotesRepository: QuoteRepository)
     : ViewModel(){
 
-    fun addQuotes(quote: Quote) = quotesRepository.addQuote(quote)
+    fun addQuote(quote: Quote) = quotesRepository.addQuote(quote)
 
     fun getQuotes() = quotesRepository.getQuotes()
 
