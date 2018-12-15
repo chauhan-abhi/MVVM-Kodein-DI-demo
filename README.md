@@ -7,3 +7,4 @@ This app uses:
 * AndoidX extenions
 * MVVM Architecture Componets
 * Kodein
+* Live Data
